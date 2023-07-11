@@ -1,1 +1,9 @@
-<p>navbar works!</p>
+<div class="flex w-full justify-between bg-blue-400 p-4 text-white items-center">
+    <ng-content></ng-content>
+    <div class="flex">
+        <div *ngFor="let menu of menu_list" class="first:px-0 px-3 font-semibold">
+            {{menu}}
+        </div>
+    </div>
+    <app-button title="Download" (newItemEvent)="actionDownload($event)" ></app-button>
+</div>
