@@ -8,11 +8,12 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   buttonTitle:string="Download"
   menu_list:string[] = [
-    'Top',
-    'For every one',
-    'Feature',
-    'Preview',
-    'License'
+    'Anime',
+    'Manga',
+    'Comunity',
+    'Industry',
+    'Watch',
+    'My Watch List'
   ]
 
   actionDownload(value:string):void{

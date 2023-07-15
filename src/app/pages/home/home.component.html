@@ -1,0 +1,24 @@
+<app-navbar> </app-navbar>
+<div class="lg:mt-12 w-full container mx-auto px-8">
+  <input
+    class="w-full bg-gray-300 rounded-lg p-4"
+    type="text"
+    name="search"
+    placeholder="Search Anime,Manga, and more..."
+    id=""
+  />
+
+  <!-- section -->
+  <div class="mt-8 bg-4 flex justify-between">
+    <div class="font-bold text-lg">Anime List</div>
+  </div>
+
+  <div class="w-full flex flex-wrap" *ngIf="!isLoading; else loading">
+    <div class="pr-4" *ngFor="let anime of animeList">
+      <app-anime-card [anime]="anime"></app-anime-card>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="text-center">Loading...</div>
+  </ng-template>
+</div>
