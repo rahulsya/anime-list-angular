@@ -10,6 +10,7 @@ import { AnimeService } from 'src/app/services/anime.service';
 export class HomeComponent implements OnInit {
   animeList: Anime[] = [];
   isLoading: boolean = false;
+  selectedAnime: Anime | null = null;
 
   constructor(private anime: AnimeService) {}
 
@@ -29,5 +30,9 @@ export class HomeComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  selectAnime(value: Anime) {
+    this.selectedAnime = value;
   }
 }

@@ -15,7 +15,7 @@
 
   <div class="w-full flex flex-wrap" *ngIf="!isLoading; else loading">
     <div class="pr-4" *ngFor="let anime of animeList">
-      <app-anime-card [anime]="anime"></app-anime-card>
+      <app-anime-card [selctedAnime]="anime.id == selectedAnime?.id ? true : false" [anime]="anime" (selectAnim)="selectAnime($event)"></app-anime-card>
     </div>
   </div>
   <ng-template #loading>
