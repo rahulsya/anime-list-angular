@@ -1,21 +1,37 @@
-<div class="flex flex-col w-[180px] cursor-pointer" (click)="selectAnime(anime)">
-  <div class="mt-5">
+<div *ngIf="type == 'list-view'; else default">
+  <div class="flex mb-3">
     <img
+    class="w-[80px] h-[100px] object-cover rounded-lg "
+    src="{{ anime.coverImage }}"
+    alt="ryna"
+    />
+    <div class="ml-3 font-semibold capitalize text-lg">
+      <div>{{anime.title.english}} ({{anime.title.native}})</div>
+      <div class="text-sm">{{anime.genre.join(', ')}}</div>
+      <div class="text-sm">{{anime.year}}</div>
+    </div>
+  </div>
+</div>
+<ng-template #default>
+  <div class="flex flex-col w-[180px] cursor-pointer" (click)="selectAnime(anime)">
+    <div class="mt-5">
+      <img
       [ngClass]="selctedAnime ? 'border-2 border-blue-800' : ''"
       class="w-[180px] h-[290px] object-cover rounded-lg "
       src="{{ anime.coverImage }}"
       alt="ryna"
-    />
-  </div>
-  <div>
-    <div 
-    [ngClass]="selctedAnime ?'text-blue-800' :''"
-    class="font-semibold pt-3">
+      />
+    </div>
+    <div>
+      <div 
+      [ngClass]="selctedAnime ?'text-blue-800' :''"
+      class="font-semibold pt-3">
       {{
         anime.title.english.length > 50
-          ? (anime.title.english | slice : 0 : 25) + "..."
-          : anime.title.english
+        ? (anime.title.english | slice : 0 : 25) + "..."
+        : anime.title.english
       }}
     </div>
   </div>
 </div>
+</ng-template>

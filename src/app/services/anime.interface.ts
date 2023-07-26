@@ -1,5 +1,5 @@
-export interface AnimePopular{
-    data:Anime[]
+export interface AnimePopular {
+  data: Anime[];
 }
 export interface Anime {
   id: string;
@@ -11,6 +11,8 @@ export interface Anime {
   season: string;
   title: Title;
   mappings: Mappings;
+  year: string;
+  genre: string[];
 }
 
 export interface Title {
@@ -21,13 +23,13 @@ export interface Title {
 }
 
 export interface Mappings {
-    mal: number
-    anidb: number
-    kitsu: number
-    anilist: number
-    thetvdb: number
-    anisearch: number
-    livechart: number
-    "notify.moe": string
-    "anime-planet": string
-  }
+  mal: number;
+  anidb: number;
+  kitsu: number;
+  anilist: number;
+  thetvdb: number;
+  anisearch: number;
+  livechart: number;
+  'notify.moe': string;
+  'anime-planet': string;
+}

@@ -1,12 +1,31 @@
 <app-navbar> </app-navbar>
 <div class="lg:mt-12 w-full container mx-auto px-8">
-  <input
+    <input
     class="w-full bg-gray-300 rounded-lg p-4"
     type="text"
     name="search"
     placeholder="Search Anime,Manga, and more..."
     id=""
-  />
+    [formControl]="keyword"
+    />
+    
+  <div *ngIf="keyword.value" class="bg-gray-300 w-full mt-4 rounded-lg p-4">
+    <div class="mb-3 text-xl">
+      Result for {{keyword.value}}
+    </div>
+    <div *ngIf="!isLoadingSearch; else loadingSearch">
+      <div *ngFor="let anime of searchResults">
+        <app-anime-card type="list-view" [anime]="anime"></app-anime-card>
+      </div>
+      <a class="bg-blue-800 px-4 py-2 text-white rounded-lg " 
+      [routerLink]="['/search']" 
+      [queryParams]="{ q: keyword.value }">Load More</a>
+    </div>
+    <ng-template #loadingSearch>
+      <div>Loading...</div>
+    </ng-template>
+  </div>
+  
 
   <!-- section -->
   <div class="mt-8 bg-4 flex justify-between">

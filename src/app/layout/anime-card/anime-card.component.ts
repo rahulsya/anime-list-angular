@@ -8,11 +8,11 @@ import { Anime } from 'src/app/services/anime.interface';
 })
 export class AnimeCardComponent {
   @Input() anime!: Anime;
-  @Input() selctedAnime!:boolean;
+  @Input() selctedAnime!: boolean;
+  @Input() type!: 'default' | 'list-view';
   @Output() selectAnim = new EventEmitter();
 
   selectAnime(anim: Anime) {
-    this.selectAnim.emit(anim)
+    this.selectAnim.emit(anim);
   }
-  
 }
