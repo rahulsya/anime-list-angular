@@ -1,31 +1,28 @@
 <app-navbar> </app-navbar>
 <div class="lg:mt-12 w-full container mx-auto px-8">
-    <input
-    class="w-full bg-gray-300 rounded-lg p-4"
-    type="text"
-    name="search"
+  <app-input
+    label="name"
     placeholder="Search Anime,Manga, and more..."
-    id=""
-    [formControl]="keyword"
-    />
-    
-  <div *ngIf="keyword.value" class="bg-gray-300 w-full mt-4 rounded-lg p-4">
-    <div class="mb-3 text-xl">
-      Result for {{keyword.value}}
-    </div>
+    [(inputValue)]="keyword"
+    (inputValueChange)="changeValue($event)"
+  ></app-input>
+  <div *ngIf="keyword" class="bg-gray-300 w-full mt-4 rounded-lg p-4">
+    <div class="mb-3 text-xl">Result for {{ keyword }}</div>
     <div *ngIf="!isLoadingSearch; else loadingSearch">
       <div *ngFor="let anime of searchResults">
         <app-anime-card type="list-view" [anime]="anime"></app-anime-card>
       </div>
-      <a class="bg-blue-800 px-4 py-2 text-white rounded-lg " 
-      [routerLink]="['/search']" 
-      [queryParams]="{ q: keyword.value }">Load More</a>
+      <a
+        class="bg-blue-800 px-4 py-2 text-white rounded-lg"
+        [routerLink]="['/search']"
+        [queryParams]="{ q: keyword }"
+        >Load More</a
+      >
     </div>
     <ng-template #loadingSearch>
       <div>Loading...</div>
     </ng-template>
   </div>
-  
 
   <!-- section -->
   <div class="mt-8 bg-4 flex justify-between">
@@ -34,7 +31,11 @@
 
   <div class="w-full flex flex-wrap" *ngIf="!isLoading; else loading">
     <div class="pr-4" *ngFor="let anime of animeList">
-      <app-anime-card [selctedAnime]="anime.id == selectedAnime?.id ? true : false" [anime]="anime" (selectAnim)="selectAnime($event)"></app-anime-card>
+      <app-anime-card
+        [selctedAnime]="anime.id == selectedAnime?.id ? true : false"
+        [anime]="anime"
+        (selectAnim)="selectAnime($event)"
+      ></app-anime-card>
     </div>
   </div>
   <ng-template #loading>
