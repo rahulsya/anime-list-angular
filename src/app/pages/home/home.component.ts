@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(private anime: AnimeService) {}
 
   ngOnInit(): void {
-    // this.loadPopularAnime();
+    this.loadPopularAnime();
 
     // this.keywordSubcription = this.keyword.valueChanges
     //   .pipe(debounceTime(500))
